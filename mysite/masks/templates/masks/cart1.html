@@ -1,0 +1,390 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>Корзина</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+      <link rel="stylesheet" href="/static/medicine/style.css">
+    <meta name="theme-color" content="#563d7c">
+
+
+    <style>
+      .carthead
+      {
+        color: white;
+        background-image: url(/static/medicine/2.jpg);
+        background-size: cover;
+      }
+
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      .bg-dark
+      {
+        background-color: #1e3852 !important;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      .jumbotron
+      {
+        background-image: url(static/medicine/image.jpg);
+      }
+      .right
+      {
+        float:right;
+      }
+
+      .left
+      {
+        float:left;
+      }
+      .navbar
+      {
+        background-image: url(/static/medicine/image2.jpg) !important;
+      }
+      .quantity {
+    float: left;
+    margin-right: 15px;
+    background-color: #eee;
+    position: relative;
+    width: 80px;
+    overflow: hidden
+}
+
+.quantity input {
+    margin: 0;
+    text-align: center;
+    width: 15px;
+    height: 15px;
+    padding: 0;
+    float: right;
+    color: #000;
+    font-size: 20px;
+    border: 0;
+    outline: 0;
+    background-color: #F6F6F6
+}
+
+.quantity input.qty {
+    position: relative;
+    border: 0;
+    width: 100%;
+    height: 40px;
+    padding: 10px 25px 10px 10px;
+    text-align: center;
+    font-weight: 400;
+    font-size: 15px;
+    border-radius: 0;
+    background-clip: padding-box
+}
+
+.quantity .minus, .quantity .plus {
+    line-height: 0;
+    background-clip: padding-box;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    -webkit-background-size: 6px 30px;
+    -moz-background-size: 6px 30px;
+    color: #bbb;
+    font-size: 20px;
+    position: absolute;
+    height: 50%;
+    border: 0;
+    right: 0;
+    padding: 0;
+    width: 25px;
+    z-index: 3
+}
+
+.quantity .minus:hover, .quantity .plus:hover {
+    background-color: #dad8da
+}
+
+.quantity .minus {
+    bottom: 0
+}
+.shopping-cart {
+    margin-top: 20px;
+}
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="/">FMR GROUP</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/news1">Новости<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/buy">Продукция<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/gallery">Медиа<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/contacts">Контакты<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active dropdown">
+        <a class="nav-link dropdown-toggle" href="/study" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Образование<span class="sr-only">(current)</span></a>
+        <div class="dropdown-menu" style="background-image:URL('/static/medicine/image2.jpg')" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/courses">Курсы</a>
+        </div>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/contacts">Контакты<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <div style="color: white;">
+       {% if not user.is_authenticated %}
+       <a class="btn btn-success" style="margin-left: 30px" href="/account"> Войти </a>
+       {% else %}
+       <a href='/account/cabinet'>{{user.username}}</a>
+       <a class="btn btn-outline-danger" style="margin-left: 30px" href="/account/logout">Выйти</a>
+       {% endif %}
+    </div>
+  </div>
+</nav>
+
+
+<script src="https://use.fontawesome.com/c560c025cf.js"></script>
+<div class="container">
+   <div class="card shopping-cart" style="margin-top:30px">
+            <div class="card-header bg-dark text-light carthead">
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                Корзина
+                <div class="clearfix"></div>
+            </div>
+            <div class="card-body">
+                    <!-- PRODUCT -->
+                    {% for item in data%}
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-2 text-center">
+                                <img class="img-responsive" src="{{item.product.img_url}}" alt="prewiew" width="120" height="80">
+                        </div>
+                        <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+                            <h5 class="product-name"><strong>{{item.product.product_name}}</strong></h5>
+                            <h4>
+                                <small>{{item.product.discription}}</small>
+                            </h4>
+                        </div>
+                        <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+                            <div class="col-3 col-sm-3 col-md-6 text-md-right price-id-{{item.product.id}}" data-price="{{item.product.price}}"style="padding-top: 5px">
+                                <h6><strong >{{item.product.price}} <span class="text-muted">x</span></strong></h6>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4">
+                                <div class="quantity">
+                                    <input type="button" value="+" class="plus tpbtn" data-id="{{item.product.id}}" >
+                                    <input type="number product sum-id-{{item.product.id}}" step="1" max="99" min="1" title="Qty" class="product sum-id-{{item.product.id}} qty" data-id="{{item.product.id}}" value="{{item.quantity}}"
+                                           size="4">
+                                    <input type="button" value="-" class="minus tmbtn" data-id="{{item.product.id}}" >
+                                </div>
+                            </div>
+                            <div class="col-2 col-sm-2 col-md-2 text-right">
+                                <button type="button" class="btn btn-outline-danger btn-xs rembtn" data-product="{{item.product.id}}" >
+                                    <i class="fa fa-trash" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- END PRODUCT -->
+                    {%endfor%}
+
+                <div class="pull-right">
+                </div>
+            </div>
+            <div class="card-footer">
+                <div class="coupon col-md-5 col-sm-5 no-padding-left pull-left">
+                    <div class="row">
+
+                    </div>
+                </div>
+                <div class="pull-right" style="margin: 10px">
+                    <a href="" class="btn btn-success pull-right" data-toggle="modal" data-target="#exampleModal" style="margin-left:20px">Заказать</a>
+                    <div class="pull-right " style="margin: 5px">
+                        <b class="summary"></b>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-row">
+              <div class="salert col-lg-12"></div>
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Имя</label>
+                    <input type="text" class="form-control form-name" id="inputEmail4">
+                    </div>
+                      <div class="form-group col-md-6">
+          <label for="inputPassword4">Фамилия</label>
+          <input type="text" class="form-control form-second-name" id="inputPassword4">
+          </div>
+          </div>
+          <div class="form-group">
+          <label for="inputAddress">Почта</label>
+          <input type="text" class="form-control form-mail" id="inputAddress" placeholder="mail@gmail.com">
+          </div>
+          <div class="form-group">
+          <label for="inputAddress2">Номер телефона</label>
+          <input type="text" class="form-control form-number" id="inputAddress2" placeholder="">
+          </div>
+          <div class="form-group">
+          <label for="inputAddress2">Комментарий</label>
+          <input type="text" class="form-control form-comment" id="inputAddress2" placeholder="">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button align="center" class="btn btn-primary btn-send">Отправить заказ</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<footer class="container">
+  <p>© Company 2017-2019</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://getbootstrap.com/docs/4.3/examples/carousel/carousel.css" >
+<script>
+
+  var summary = 0;
+
+  $(".product").on('input', function() {
+    var id = $(this).data('id');
+    var news = $(".sum-id-"+id).val();
+    refreshPrices();
+    $.post("/add/",
+    {
+      product_id: id,
+      quantity: news,
+    },
+    function(data, status){
+    });
+});
+  $( document ).ready(function() {
+      refreshPrices();
+  });
+
+  $(".tpbtn").on("click", function()
+  {
+    var id = $(this).data('id');
+    var before = $(".sum-id-"+id).val();
+    var news = +before+1;
+    $(".sum-id-"+id).val(news);
+    refreshPrices();
+    $.post("/add/",
+    {
+      product_id: id,
+      quantity: news,
+    },
+    function(data, status){
+    });
+  });
+  $(".btn-send").on("click", function(e)
+  {
+    e.preventDefault();
+    var name = $(".form-name").val();
+    var second_name= $(".form-second-name").val();
+    var mail= $(".form-mail").val();
+    var number= $(".form-number").val();
+    var comment= $(".form-comment").val();
+    $(this).remove();
+    $.post("/order/",
+    {
+      name : name,
+      second_name:second_name,
+      mail:mail,
+      number:number,
+      comment:comment,
+    },
+    function(data, status){
+      $(".salert").html(`<div class="alert alert-success" role="alert">Ваш заказ принят! Скоро мы с вами свяжемся.</div>`);
+    }).fail( function(xhr, textStatus, errorThrown) {
+      $(".salert").html(`<div class="alert alert-danger" role="alert">Пожалуйста зарегистрируйтесь</div>`);
+      });
+  });
+
+
+    $(".tmbtn").on("click", function()
+    {
+      var id = $(this).data('id');
+      var before = $(".sum-id-"+id).val();
+      var news = +before-1;
+      $(".sum-id-"+id).val(news);
+      refreshPrices();
+      $.post("/add/",
+      {
+        product_id: id,
+        quantity: news,
+      },
+      function(data, status){
+      });
+    });
+  function refreshPrices()
+  {
+      summary = 0;
+    $( ".product" ).each( function( index, element ){
+      var id = $(this).data('id');
+        var quantity = $(this).val();
+      var price = $(".price-id-"+id).data('price');
+      var sum = price * quantity;
+      $(".show-price-"+id).html(sum);
+      summary += sum;
+      $(".summary").html("Итого: " + summary);
+    });
+  }
+  $(".rembtn").on("click", function() {
+      var product_id = $(this).data('product');
+      $.post("/remove/",
+      {
+          product_id: product_id,
+      },
+      function(data, status){
+          location.reload();
+        });
+
+    });
+
+</script>
+</body></html>

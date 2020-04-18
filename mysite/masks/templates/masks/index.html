@@ -1,0 +1,145 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+  <meta name="yandex-verification" content="7d7a8925c912313a" />
+    <title>FMR group</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/medicine/main.css">
+    <meta name="theme-color" content="#563d7c">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      .bg-dark
+      {
+        background-color: #1e3852 !important;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      .jumbotron
+      {
+        color: white;
+        background-image: url(static/medicine/image1.jpg);
+        background-size: cover;
+      }
+      .navbar
+      {
+        background-image: url(static/medicine/image2.jpg);
+      }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="/">FMR GROUP</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/news1">Новости<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/buy">Продукция<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/gallery">Медиа<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/contacts">Контакты<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active dropdown">
+        <a class="nav-link dropdown-toggle" href="/study" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Образование<span class="sr-only">(current)</span></a>
+        <div class="dropdown-menu" style="background-image:URL('/static/medicine/image2.jpg')" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/courses">Курсы</a>
+        </div>
+      </li>
+    </ul>
+    <div style="color: white;">
+       {% if not user.is_authenticated %}
+       <a class="btn btn-success" style="margin-left: 30px" href="/account"> Войти </a>
+       {% else %}
+       <a href='/account/cabinet'>{{user.username}}</a>
+
+       <a class="btn btn-outline-danger" style="margin-left: 30px" href="/account/logout">Выйти</a>
+       {% endif %}
+    </div>
+  </div>
+</nav>
+
+
+
+<main role="main">
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron d-sm-none d-md-block" >
+    <div class="container">
+      <h1 class="display-3">В борьбе с коронавирусом</h1>
+      <p>Наша оранизация это товарищество молодых специалистов! Компания ведет научно практические исследования в области антивирусной и биологической защиты, продажей средств антибактериальной защиты. В нашей продукции медицинские трехслойные маски, антисептики, медицинские халаты и специльные костюмы и распираторы, оборудование для медиков.</p>
+      <p><a class="btn btn-primary btn-lg" href="/buy" role="button">Посмотреть продукцию</a></p>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+      <div class="col-md-4">
+        <img src="https://www.fdoctor.ru/upload/medialibrary/2f8/2f8fef105269ad5d2a82065fb03568a4.jpg" alt="..." class="img-thumbnail">
+        <h2>Чем мы занимаемся</h2>
+        <p>Наш холдинг проводит интенсивы и образовательные курсы и представляет систему онлайн курсов по след направлениям: образовательные курсы для мед работников, повышение квалификации мед работников, грудничковое плавание, грудничковый массаж, мягкая школа для детей, курсы раннего развития ребенка. Наш центр собирает уникальных специалистов со всего мира и формирует для Вас профессиональные образовательные программы! Присоединятйтесь. </p>
+      </div>
+      <div class="col-md-4">
+        <img src="https://www.clinicablg.ru/wp-content/uploads/2017/03/519c7c3da0f302043600000f_519c8752991f3.jpg" alt="..." class="img-thumbnail">
+
+        <h2>Инициатива нашей команды</h2>
+        <p>Наша команда формирует центр координации организации и координации добровольческих и волонтерских молодёжных отрядов для оказания поддержки людям приклонного возраста!
+
+      Также представляется возможность в оперативном режиме силами добровольцев и волонтеров обеспечить наличие медицинских масок у молодых людей, школьников и пенсионеров. Предлгаем в услоиях пандемии раздавать маски бесплатно, в том числе, в метрополитене столицы.
+      Предлагается обеспечить информационное сообщение через средства элетронной связи и оповещения на мобильных утройствах личного пользования для оказания необходимой помощи. Так люди приклонного возраста смогут обратиться в центр координиции с помощью электронной системы, а мы - обеспечить изоляцию здоровых людей от возможных очагов распространения инфекции.</p>
+      </div>
+      <div class="col-md-4">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTfLNK7GXt1DDtGaoYtcEWpQiwAt7OZ7voIF3suke96JeYyDgkH&usqp=CAU" alt="..." class="img-thumbnail">
+        <h2>О нас</h2>
+        <p>Мы-Инвестиционный центр и стратегический партнер для начинащих свое дело, поддержка малого бизнеса, иновационных идей и молодых талантов</p>
+      </div>
+    </div>
+    <hr>
+    <div align="center">
+        <h3>Карта распространения коронавируса:</h3>
+        <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Яндекс.Карты</a><a href="https://yandex.ru/maps/covid19?from=api-maps&ll=57.024984%2C45.141154&origin=jsapi_2_1_76&pt=44.151406%2C49.615821~44.269759%2C46.307743~41.268128%2C47.728732~48.033574%2C46.347869~46.797223%2C51.578529~39.307699%2C48.573896~40.233395%2C50.970898~43.344521%2C44.953551~41.592249%2C52.474699~39.610422%2C45.544904&utm_medium=mapframe&utm_source=maps&z=2.85" style="color:#eee;font-size:12px;position:absolute;top:14px;">Яндекс.Карты</a><iframe src="https://yandex.ru/maps/covid19?embed=covid-map" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+      </div>
+    <hr>
+    <div>
+    <h3>Наши партнёры:</h3>
+     <a href="https://xn--2020-f4dsa7cb5cl7h.xn--p1ai/"> <img style="height: 5%; width: auto;"  src="https://static.tildacdn.com/tild3736-6338-4466-a235-616633613366/_.svg"></a>
+    </div>
+  </div> <!-- /container -->
+
+</main>
+
+<footer class="container">
+  <p>© Company 2019-2020</p>
+</footer>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body></html>

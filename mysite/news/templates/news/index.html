@@ -1,0 +1,128 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>FMR group</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/medicine/mai.css">
+    <meta name="theme-color" content="#563d7c">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      .bg-dark
+      {
+        background-color: #1e3852 !important;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+      .jumbotron
+      {
+        color: white;
+        background-image: url(/static/medicine/image1.jpg);
+        background-size: cover;
+      }
+      .navbar
+      {
+        background-image: url(/static/medicine/image2.jpg);
+      }
+    </style>
+    <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="/static/medicine/style.css">
+  </head>
+  <body>
+    <body>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="/">FMR GROUP</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/news1">Новости<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/buy">Продукция<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/gallery">Медиа<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/contacts">Контакты<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active dropdown">
+          <a class="nav-link dropdown-toggle" href="/study" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Образование<span class="sr-only">(current)</span></a>
+          <div class="dropdown-menu" style="background-image:URL('/static/medicine/image2.jpg')" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="/courses">Курсы</a>
+          </div>
+        </li>
+      </ul>
+      <div style="color: white;">
+         {% if not user.is_authenticated %}
+         <a class="btn btn-success" style="margin-left: 30px" href="/account"> Войти </a>
+         {% else %}
+         <a href='/account/cabinet'>{{user.username}}</a>
+         <a class="btn btn-outline-danger" style="margin-left: 30px" href="/account/logout">Выйти</a>
+         {% endif %}
+      </div>
+    </div>
+  </nav>
+
+<!-- style="background-image:URL('/static/medicine/image2.jpg')" -->
+<div class="container" style="margin-top:30px">
+      <div class="jumbotron p-3 p-md-5 text-white rounded bg-dark">
+        <div class="col-md-6 px-0">
+          <h1 class="display-4 font-italic" style="color: white;">Cвежие новости</h1>
+<!--          <p class="lead my-3">Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.</p>-->
+<!--          <p class="lead mb-0"><a href="#" class="text-white font-weight-bold">Continue reading...</a></p>-->
+        </div>
+      </div>
+
+      <div class="row mb-2">
+
+        {%for new in news%}
+        <div class="col-md-6">
+          <div class="card flex-md-row mb-4 box-shadow h-md-250">
+              {% if user.is_superuser %}
+              <a type="button" href="editor/{{new.id}}/" class="btn btn-outline-info">Edit</a>
+              {%endif%}
+            <div class="card-body d-flex flex-column align-items-start">
+              <strong class="d-inline-block mb-2 text-primary">{{new.category.category_name}}</strong>
+              <h3 class="mb-0">
+                <a class="text-dark" href="#">{{new.news_title}}</a>
+              </h3>
+              <div class="mb-1 text-muted">{{new.date}}</div>
+              <p class="card-text mb-auto">{{new.short_description}}</p>
+              <a href="articleview/{{new.id}}">Продолжить чтение...</a>
+            </div>
+            <img class="card-img-right flex-auto d-none d-md-block" data-src="holder.js/200x250?theme=thumb" alt="Thumbnail [200x250]" style="width: 200px; height: 250px;" src="{{new.img_url}}" data-holder-rendered="true">
+          </div>
+        </div>
+        {%endfor%}
+
+      </div>
+      {% if user.is_staff %}
+      <a type="button" href="addnew/" class="btn btn-outline-primary">Добавить новую статью</a>
+      {%endif%}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body></html>

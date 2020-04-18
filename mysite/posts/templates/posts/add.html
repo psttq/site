@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="language" content="english">
+<meta name="viewport" content="width=device-width">
+
+<meta name="description" content="Quill is a free, open source WYSIWYG editor built for the modern web. Completely customize it for any need with its modular architecture and expressive API.">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:site" content="@quilljs">
+
+<meta name="twitter:title" content="Full Editor - Quill">
+
+<meta name="twitter:description" content="Quill is a free, open source rich text editor built for the modern web.">
+<meta name="twitter:image" content="https://quilljs.com/assets/images/brand-asset.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://quilljs.com/standalone/full/">
+<meta property="og:image" content="https://quilljs.com/assets/images/brand-asset.png">
+<meta property="og:title" content="Full Editor - Quill">
+<meta property="og:site_name" content="Quill">
+
+<link rel="canonical" href="https://quilljs.com/standalone/full/">
+<link type="application/atom+xml" rel="alternate" href="https://quilljs.com/feed.xml" title="Quill - Your powerful rich text editor" />
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.css" />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/monokai-sublime.min.css" />
+
+<link rel="stylesheet" href="/static/news/quill.snow.css" />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/medicine/main.css">
+<meta name="theme-color" content="#563d7c">
+
+
+<title>FMR group</title>
+<style>
+  body > #standalone-container {
+    margin: 50px auto;
+    max-width: 720px;
+  }
+  #editor-container {
+    height: 350px;
+  }
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  .bg-dark
+  {
+    background-color: #1e3852 !important;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+  .jumbotron
+  {
+    color: white;
+    background-image: url(/static/medicine/image1.jpg);
+    background-size: cover;
+  }
+  .navbar
+  {
+    background-image: url(/static/medicine/image2.jpg);
+  }
+</style>
+<link href="jumbotron.css" rel="stylesheet">
+
+</head>
+<body>
+
+  <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<a class="navbar-brand" href="/">FMR GROUP</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarsExampleDefault">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+      <a class="nav-link" href="/news1">Новости<span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="/buy">Продукция<span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="/contacts">Контакты<span class="sr-only">(current)</span></a>
+    </li>
+    <li class="nav-item active dropdown">
+      <a class="nav-link dropdown-toggle" href="/study" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Образование<span class="sr-only">(current)</span></a>
+      <div class="dropdown-menu" style="background-image:URL('/static/medicine/image2.jpg')" aria-labelledby="navbarDropdownMenuLink">
+        <a class="dropdown-item" href="/courses">Курсы</a>
+      </div>
+    </li>
+  </ul>
+</div>
+</nav>
+  <form action="/gallery/addimage/" enctype="multipart/form-data" method="post" style="margin:auto; margin-top:100px" class="col-lg-6">
+    {% csrf_token %}
+    {% for field in form %}
+      {% if field.name == 'cover' %}
+      <div class="input-group">
+        <div class="custom-file">
+          {{ field }}
+          <label class="custom-file-label" for="inputGroupFile01" data-browse="Обзор">Выбрать файл</label>
+        </div>
+      </div>
+      {% elif field.name == 'title'%}
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Описание фото</span>
+          </div>
+          {{ field }}
+        </div>
+      {%else%}
+      <div class="form-row align-items-center">
+       <div class="col-auto my-1">
+         {{field}}
+         <!-- <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+           <option selected>Категория</option>
+           {%for category in categories%}
+           <option value="{{category.id}}">{{category.name}}</option>
+           {%endfor%}
+         </select> -->
+       </div>
+      {% endif %}
+    {% endfor %}
+    <input id="submit" type="submit" value="OK">
+  </form>
+
+<footer class="container">
+  <p>© Company 2017-2019</p>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.7.1/katex.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+<script src="/static/news/quill.min.js"></script>
+
+<script>
+  $('#inputGroupFile01').on('change',function(){
+      var fileName = $(this).val();
+      path = fileName.split("\\");
+      fileName = path[path.length - 1];
+      $(this).next('.custom-file-label').html(fileName);
+  })
+  var quill = new Quill('#editor-container', {
+    modules: {
+      formula: true,
+      syntax: true,
+      toolbar: '#toolbar-container'
+    },
+    placeholder: 'Compose an epic...',
+    theme: 'snow'
+  })
+
+
+  $("#submit").on("click", function(e)
+  {
+    $("#hiddenArea").val($(".ql-editor").html());
+  });
+
+  $(".btn-send").on("click", function(e)
+  {
+    e.preventDefault();
+    var small = $(".small").val();
+    $.post("/news/a/",
+    {
+      small : small,
+    },
+    function(data, status){
+      alert(data);
+    });
+  });
+</script>
+
+
+</body>
+</html>

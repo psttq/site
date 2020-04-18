@@ -1,0 +1,264 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.5">
+    <title>Покупки</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://getbootstrap.com/docs/4.3/examples/carousel/carousel.css" >
+<link href="/static/medicine/sidebar.css" rel="stylesheet">
+    <style>
+      .myimg
+      {
+        max-width: 80%;
+        max-height: auto;
+      }
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+        .card-columns {
+        column-count: 1;
+        }
+      }
+      .card-columns {
+      column-count: 5;
+  }
+
+    </style>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<style>
+
+
+    .navbar
+    {
+      background-image: url(/static/medicine/image2.jpg);
+    }
+}
+</style>
+    <!-- Custom styles for this template -->
+  </head>
+  <body >
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+  <a class="navbar-brand" href="/">FMR GROUP</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/news1">Новости<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/buy">Продукция<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/gallery">Медиа<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/contacts">Контакты<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active dropdown">
+        <a class="nav-link dropdown-toggle" href="/study" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Образование<span class="sr-only">(current)</span></a>
+        <div class="dropdown-menu" style="background-image:URL('/static/medicine/image2.jpg')" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/courses">Курсы</a>
+        </div>
+      </li>
+    </ul>
+    <a class="btn btn-success" style="float: right;"href="/cart">Корзина<span class="sr-only">(current)</span></a>
+
+  </div>
+</nav>
+
+
+    <!-- Page Content -->
+      <div class="container">
+
+        <div class="row">
+
+          <div class="col-lg-3" >
+
+            <h1 class="my-4">FMR GROUP</h1>
+            <div class="list-group">
+              {%for item in categories%}
+              <a href="#" class="list-group-item btnclick" data-category="{{item.id}}">{{item.category_name}}</a>
+              {%endfor%}
+            </div>
+
+          </div>
+          <!-- /.col-lg-3 -->
+
+          <div class="col-lg-9" style="margin-top: 30px">
+
+
+
+            <div class="row products">
+
+            </div>
+            <!-- /.row -->
+
+          </div>
+          <!-- /.col-lg-9 -->
+
+        </div>
+        <!-- /.row -->
+
+      </div>
+      <!-- /.container -->
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script>
+function getCookie(name) {
+    var cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        var cookies = document.cookie.split(';');
+        for (var i = 0; i < cookies.length; i++) {
+            var cookie = cookies[i].trim();
+            // Does this cookie string begin with the name we want?
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+var csrftoken = getCookie('csrftoken');
+
+function csrfSafeMethod(method) {
+    // these HTTP methods do not require CSRF protection
+    return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+}
+$.ajaxSetup({
+    beforeSend: function(xhr, settings) {
+        if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+        }
+    }
+});
+
+$( document ).ready(function() {
+  $.post("/get/",
+  {
+    category_id: 1
+  },
+  function(data, status){
+    print_card(data);
+
+    });
+  });
+
+
+$(".btnclick").on( "click", function() {
+  $.post("/get/",
+  {
+    category_id: $(this).data('category')
+  },
+  function(data, status){
+    print_card(data);
+  });
+});
+
+function print_card(data)
+{
+  $(".products").html("");
+  data.forEach(function(entry) {
+    var str = `
+                  <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card h-100">
+                      <a href="#"><img class="card-img-top"  src="`+entry['img_url']+`" alt=""></a>
+                      <div class="card-body">
+                        <h4 class="card-title">
+                          <a href="#">`+entry['product_name']+`</a>
+                        </h4>
+                        <h5>`+entry['price']+`Р</h5>
+                        <p class="card-text "><button type="button" class="btn btn-outline-secondary modalbtn" data-id="`+entry['id']+`"data-toggle="modal" data-target="#modal-`+entry['id']+`">
+                          Подробнее...
+                          </button>
+                      </p>
+                      </div>
+                      <div class="card-footer" style="  background-image: url(/static/medicine/2.jpg);
+                        background-size: cover;">
+                        <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Количество"  id="input-product-`+entry['id']+`">
+                        <div class="input-group-append">
+                          <button class="btn btn-success addbtn" data-toggle="modal" data-target="#exampleModalCenter" data-product="`+entry['id']+`" type="button" id="button-addon2">В корзину</button>
+                          <!-- Modal -->
+                          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLongTitle">Заказ успешно добавлен!</h5>
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Продолжить покупки</button>
+                                  <a type="button" class="btn btn-primary" href="/cart">Перейти в корзину</a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!-- Modal -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="modal fade" id="modal-`+entry['id']+`" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">`+entry['product_name']+`</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        `+entry['description']+`
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+`;
+
+    $(".products").append(str);
+    $(".addbtn").on("click", function() {
+        var quantity = $("#input-product-"+$(this).data('product')).val()
+        var product_id = $(this).data('product');
+        $.post("/add/",
+        {
+          product_id: product_id,
+          quantity: quantity,
+        },
+        function(data, status){
+        });
+      });
+    });
+}
+</script>
+</body></html>

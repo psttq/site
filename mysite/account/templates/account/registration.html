@@ -1,0 +1,45 @@
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v3.8.6">
+    <title>FMR group</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/medicine/main.css">
+    <meta name="theme-color" content="#563d7c">
+    <!-- Custom styles for this template -->
+  <link rel="stylesheet" href="/static/medicine/style_account.css">
+  </head>
+
+  <body class="text-center">
+        <form class="form-signin" method="POST"  action="/account/register/">
+          {% csrf_token %}
+          <h1 class="h3 mb-3 font-weight-normal">Регистрация</h1>
+          <label for="inputEmail" class="sr-only">Логин</label>
+          <input type="login" name="login" id="inputEmail" class="form-control" placeholder="Логин" required="" autofocus="">
+          <label for="inputEmail" class="sr-only">Имя</label>
+          <input type="login" name="name" id="inputEmail" class="form-control" placeholder="Имя" required="" autofocus="">
+          <label for="inputPassword" class="sr-only">Пароль</label>
+          <label for="inputEmail" class="sr-only">Почта</label>
+          <input type="login" name="email" id="inputEmail" class="form-control" placeholder="Почта" required="" autofocus="">
+          <label for="inputPassword" class="sr-only">Пароль</label>
+          <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Пароль" required="">
+          <div class="btn-group" data-toggle="buttons">
+                              <label class="btn btn-outline-info">
+                                  <input type="radio" id="NA" name="type" value="0" autofocus="true"/> Покупатель
+                              </label>
+                              <label class="btn btn-outline-info">
+                                  <input type="radio" id="EUW" name="type" value="1" /> Партнёр
+                              </label>
+
+                          </div>
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Зарегистрироваться</button>
+          <p class="2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo-5 mb-3 text-muted">© 2017-2018</p>
+        </form>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body></html>
